@@ -1,0 +1,73 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>ua.sumdu.Chalyi</groupId>
+   <version>1.0</version>
+   <artifactId>shop</artifactId>
+   <packaging>pom</packaging>
+   <name>Laba 4</name>
+
+   <modules>
+      <module>ear</module>
+      <module>web</module>
+	  <module>ejb</module>
+   </modules>
+   
+    <dependencies>
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>5</version>
+			<scope>provided</scope>
+		</dependency>
+    </dependencies>
+
+    <build>  
+      	<plugins>  
+			<plugin>  
+				<artifactId>maven-compiler-plugin</artifactId>  
+				<configuration>  
+					<source>1.5</source>  
+					<target>1.5</target>  
+				</configuration>  
+			</plugin>           
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<ejbVersion>2.0</ejbVersion>
+				</configuration>
+			</plugin>
+
+			<plugin> 
+			  <groupId>com.oracle.weblogic</groupId>
+			  <artifactId>weblogic-maven-plugin</artifactId>
+			  <version>10.3.4</version>
+			  <configuration>
+				<adminurl>t3://localhost:7001</adminurl>
+				<user>weblogic</user>
+				<password>12345678</password>
+				<name>${project.build.finalName}</name>
+				<remote>true</remote>
+				<upload>true</upload>
+				<targets>AdminServer</targets>
+			  </configuration>
+			  <executions>
+				<execution>
+				  <id>deploy</id>
+				  <phase>pre-integration-test</phase>
+				  <goals>
+					<goal>deploy</goal>
+				  </goals>
+				  <configuration>
+					<source>ear/target/ear-1.0.ear</source>
+				  </configuration>
+				</execution>
+			  </executions>
+			</plugin>
+		</plugins>
+    </build>
+	
+	
+	
+</project>

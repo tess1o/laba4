@@ -1,0 +1,15 @@
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>ua.sumdu.Chalyi.shop</groupId>
+   <artifactId>ejb</artifactId>
+   <packaging>ejb</packaging>
+   <version>1.0</version>
+   <name>ejb for laba4</name>
+
+   <parent>
+      <groupId>ua.sumdu.Chalyi</groupId>
+      <artifactId>shop</artifactId>
+      <version>1.0</version>
+   </parent>
+</project>

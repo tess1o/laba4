@@ -1,0 +1,31 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>ua.sumdu.Chalyi.shop</groupId>
+   <artifactId>ear</artifactId>
+   <packaging>ear</packaging>
+   <version>1.0</version>
+   <name>laba4 EAR</name>
+
+   <parent>
+      <groupId>ua.sumdu.Chalyi</groupId>
+      <artifactId>shop</artifactId>
+      <version>1.0</version>
+   </parent>
+
+   <dependencies>
+      <dependency>
+         <groupId>ua.sumdu.Chalyi.shop</groupId>
+         <artifactId>web</artifactId>
+		 <version>1.0</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+		<groupId>ua.sumdu.Chalyi.shop</groupId>
+         <artifactId>ejb</artifactId>
+         <version>1.0</version>
+         <type>ejb</type>
+      </dependency>
+   </dependencies>
+ 
+
+</project>

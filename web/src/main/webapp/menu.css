@@ -1,0 +1,40 @@
+.menu li a {
+	text-decoration: none;
+	height: 32px;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	height: 24px;
+}
+
+.menu li a:link,.menu li a:visited {
+	color: #777;
+	display: block;
+	background: url(images/menu8.gif);
+	padding: 8px 0 0 20px;
+}
+
+.menu li a:hover,.menu li #current {
+	color: #257EB7;
+	background: url(images/menu8.gif) 0 -32px;
+	padding: 8px 0 0 25px;
+}
+
+.menu li a:active {
+	color: #fff;
+	background: url(images/menu8.gif) 0 -64px;
+	padding: 8px 0 0 25px;
+}	
+
+.menu {
+	width: 149px;
+	float: right;
+	padding: 10px;
+	border-left: #8C8484 1px solid;
+	font-size: 12px
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
