@@ -8,4 +8,8 @@
   <fast-swap>
     <enabled>true</enabled>
   </fast-swap>
+  
+     <container-descriptor>
+         <show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+       </container-descriptor>
 </weblogic-web-app>

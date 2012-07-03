@@ -32,7 +32,7 @@ public class Consts {
     public static final String CANT_LOAD_DEVICE = "Can't load device";
     public static final String CANT_REMOVE_DEVICE = "Can't remove device";
 
-    public static final String DB_NAME = "java:/OracleDS";
+    public static final String DB_NAME = "OracleDS";
 
     //component sql
     public static final String GET_ALL_COMPONENTS = "select * from component";

@@ -19,11 +19,14 @@ import javax.ejb.EntityContext;
 import javax.ejb.FinderException;
 import javax.ejb.RemoveException;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import ua.edu.ChaliyLukyanov.laba3.model.constants.Consts;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchDeviceException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
+
 
 public class DeviceBean implements EntityBean {
 
@@ -363,10 +366,15 @@ public class DeviceBean implements EntityBean {
         }
     }
 
-    private Connection getConnection() throws SQLException {
-        DataSource ds = (DataSource) context.lookup(Consts.DB_NAME);
-        return ds.getConnection();
-    }
+	private Connection getConnection() throws SQLException {
+		DataSource ds = null;
+		try {
+			ds = (DataSource) new InitialContext().lookup(Consts.DB_NAME);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		return ds.getConnection();
+	}
 
     public int getId() {
         return id;
