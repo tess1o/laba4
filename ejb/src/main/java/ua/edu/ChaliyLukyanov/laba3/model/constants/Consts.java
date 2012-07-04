@@ -43,7 +43,7 @@ public class Consts {
     public static final String UPDATE_COMPONENT =
             "update component set title = ?, description = ?, producer = ?, "
             + "weight = ?, img = ?, price = ? where id_component = ?";
-    public static final String GET_ID_LAST_COMPONENT = "select com_sq.currval from dual";
+    public static final String GET_ID_LAST_COMPONENT = "select max(id_component) from component";
 
     //device atributes
     public static final String LEVEL = "level";
@@ -58,5 +58,5 @@ public class Consts {
     public static final String GET_FIRST_LEVEL_DEVICES = "select id_device, id_component, id_prev, title from device where id_prev is null";
     public static final String GET_NEXT_LEVEL_DEVICE_BY_ID = "select level, id_device, id_component, id_prev, title from device where level = 1 start with id_prev = ? connect by prior id_device=id_prev";
     public static final String GET_PREV_LEVELS_DEVICE_BY_ID = "select level, id_device, id_component, id_prev, title from device where level > 1 start with id_device = ? connect by prior id_prev=id_device";
-    public static final String GET_ID_LAST_DEVICE = "select dev_sq.currval from dual";
+    public static final String GET_ID_LAST_DEVICE = "select max(device.id_device) from device";
 }

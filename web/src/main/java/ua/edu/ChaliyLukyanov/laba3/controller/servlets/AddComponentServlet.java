@@ -35,7 +35,6 @@ public class AddComponentServlet extends HttpServlet {
 
         try {
             Component comp = model.create(title, desc, producer, new Double(weight), img, new Double(price));
-            System.out.println("BEFORE REDIRECT");
             response.sendRedirect(request.getContextPath() + "/showcomponent?id=" + comp.getId());
         } catch (ShopException e) {
             logger.error(e);
