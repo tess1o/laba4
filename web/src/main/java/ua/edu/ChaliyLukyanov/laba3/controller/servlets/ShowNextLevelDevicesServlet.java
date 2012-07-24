@@ -60,17 +60,17 @@ public class ShowNextLevelDevicesServlet extends HttpServlet {
 					.getRequestDispatcher("/show_devices.jsp");
 			dispatcher.forward(request, response);
 		} catch (NumberFormatException e) {
-			logger.error(e);
+			logger.info(e);
 			throw new NumberFormatException(Consts.INCORRECT_VALUE + e.getMessage());
 		} catch (ShopException e) {
 			logger.error(e);
-			throw new ShopException(e.getMessage());
+			throw e;
 		} catch (NoSuchDeviceException e) {
 			logger.error(e);
-			throw new NoSuchDeviceException(e.getMessage());
+			throw e;
 		} catch (FinderException e) {
 			logger.error(e);
-			throw new ShopException(e.getMessage());
+			throw new ShopException(e);
 		}
 	}
 }

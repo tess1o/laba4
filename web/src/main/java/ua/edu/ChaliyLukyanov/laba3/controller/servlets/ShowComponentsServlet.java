@@ -40,7 +40,7 @@ public class ShowComponentsServlet extends HttpServlet {
             logger.error(e);
             throw e;
         } catch (NumberFormatException e) {
-            logger.error(e);
+            logger.info(e);
             throw e;
         } catch (FinderException e) {
             logger.error(e);

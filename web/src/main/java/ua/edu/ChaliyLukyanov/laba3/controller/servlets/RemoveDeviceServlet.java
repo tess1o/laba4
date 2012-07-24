@@ -48,10 +48,10 @@ public class RemoveDeviceServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} catch (ShopException e) {
 			logger.error(e);
-			throw new ShopException(e.getMessage());
+			throw e;
 		} catch (NumberFormatException e) {
 			logger.info(e);
-			throw new NumberFormatException(e.getMessage());
+			throw e;
 		} catch (RemoveException e) {
 			logger.error(e);
 			throw new ShopException(e.getMessage());

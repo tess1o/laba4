@@ -52,7 +52,7 @@ public class AddComponentServlet extends HttpServlet {
             logger.error(e);
             throw new ShopException(e);
         } catch (NumberFormatException e){
-        	logger.error(e);
+        	logger.info(e);
         	throw e;
         }
     }
