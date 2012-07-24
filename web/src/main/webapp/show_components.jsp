@@ -9,10 +9,14 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="menu.css" rel="stylesheet" type="text/css" />
 <link href="links.css" rel="stylesheet" type="text/css" />
-		<style type="text/css" title="currentStyle">
-			@import "http://datatables.net/release-datatables/media/css/demo_page.css";
-			@import "http://datatables.net/release-datatables/media/css/demo_table_jui.css";
-		</style>
+<style type="text/css" title="currentStyle">
+@import
+	"http://datatables.net/release-datatables/media/css/demo_page.css";
+
+@import
+	"http://datatables.net/release-datatables/media/css/demo_table_jui.css"
+	;
+</style>
 
 
 <script type="text/javascript" language="javascript"
@@ -23,7 +27,9 @@
 	$(document).ready(function() {
 		oTable = $('#show_component').dataTable({
 			"bJQueryUI" : true,
-			"sPaginationType" : "full_numbers"
+			"sPaginationType" : "full_numbers",
+			"bPaginate": false,
+			"bLengthChange": false
 		});
 	});
 </script>
@@ -65,7 +71,7 @@
 						</tbody>
 					</table>
 				</c:if>
-				
+
 			</div>
 
 			<%@ include file="menu.jsp"%>

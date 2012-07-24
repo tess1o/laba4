@@ -21,7 +21,6 @@
 <link href="menu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	$(function() {
-
 		$('select').selectmenu({
 			style : 'dropdown'
 		});
@@ -29,7 +28,10 @@
 </script>
 </head>
 <%@ page
-	import="java.util.Collection,ua.edu.ChaliyLukyanov.laba3.model.component.*,ua.edu.ChaliyLukyanov.laba3.model.device.*,ua.edu.ChaliyLukyanov.laba3.model.Application"%>
+	import="java.util.Collection,ua.edu.ChaliyLukyanov.laba3.model.component.*,
+			ua.edu.ChaliyLukyanov.laba3.model.device.*,
+			ua.edu.ChaliyLukyanov.laba3.model.Application,
+			ua.edu.ChaliyLukyanov.laba3.model.Consts"%>
 <body>
 	<div id="container">
 		<%@ include file="header.jsp"%>
@@ -37,39 +39,26 @@
 			<div class="content">
 
 				<form action="adddevice" method="post">
-					<br /> <b>Component: </b> <select name="id_component">
-						<%
-							ComponentHome compHome = (ComponentHome) request
-									.getAttribute(Application.COMPONENT);
-							Collection<Component> components = compHome.findAll();
-							for (Component c : components) {
-						%>
-						<option value="<%=c.getId()%>"><%=c.getTitle()%></option>
-						<%
-							}
-						%>
+					<br /> <b>Component: </b> <select name=<%=Consts.ID_COMPONENT %>>
+						<c:if test="${!empty components}">
+							<c:forEach items="${components}" var="comp">
+								<option value="${comp.id}" title="id">${comp.title}</option>
+							</c:forEach>
+						</c:if>
 					</select> <br /> <br /> <b>Previous device: </b> <select
 						name="id_prev_device">
 						<option value="-1"></option>
-						<%
-							DeviceHome deviceHome = (DeviceHome) request
-									.getAttribute(Application.DEVICE);
-							Collection<Device> devices = deviceHome.findAll();
-							for (Device d : devices) {
-						%>
-						<option value="<%=d.getId()%>"><%=d.getTitle()%></option>
-						<%
-							}
-						%>
-					</select><br /> <br /> <b>Title: </b><input type="text" name="title" /><br />
+						<c:if test="${!empty devices}">
+							<c:forEach items="${devices}" var="dev">
+								<option value="${dev.id}" title="id">${dev.title}</option>
+							</c:forEach>
+						</c:if>
+					</select><br /> <br /> <b>Title: </b><input type="text" name=<%=Consts.TITLE %> /><br />
 					<p align="center">
 						<input class="ui-state-default ui-corner-all" type="submit"
 							value="Add device">
 					</p>
 				</form>
-				<c:if test="${!empty param.error }">
-					<h2>${param.error}</h2>
-				</c:if>
 			</div>
 
 			<%@ include file="menu.jsp"%>

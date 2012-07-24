@@ -136,16 +136,17 @@ public class DeviceBean implements EntityBean {
         try {
             conn = getConnection();
             st = conn.prepareStatement(Consts.INSERT_DEVICE);
-            if (idPrev == -1) {
-                st.setNull(1, Types.INTEGER);
+            this.id = getNextId();
+			st.setInt(1,id);
+			if (idPrev == -1) {
+                st.setNull(2, Types.INTEGER);
             } else {
-                st.setInt(1, idPrev);
+                st.setInt(2, idPrev);
             }
-            st.setInt(2, idComponent);
-            st.setString(3, title);
+            st.setInt(3, idComponent);
+            st.setString(4, title);
             st.executeUpdate();
-            
-            this.id = this.getCurrentDeviceId();
+			
             this.idComponent = idComponent;
             this.title = title;
             this.idPrev = idPrev;
@@ -330,14 +331,14 @@ public class DeviceBean implements EntityBean {
     public void ejbPassivate() throws EJBException, RemoteException {
     }
 
-    public int getCurrentDeviceId() {
+    public int getNextId() {
         Connection conn = null;
         PreparedStatement st = null;
         ResultSet row = null;
         int ident = 0;
         try {
             conn = getConnection();
-            st = conn.prepareStatement(Consts.GET_ID_LAST_DEVICE);
+            st = conn.prepareStatement(Consts.GET_NEXT_DEVICE_ID);
             row = st.executeQuery();
 
             if (row.next()) {

@@ -30,8 +30,9 @@
 </script>
 
 </head>
-<%@ page
-	import="java.util.Collection,ua.edu.ChaliyLukyanov.laba3.model.component.*,ua.edu.ChaliyLukyanov.laba3.model.Application"%>
+<%@ page import="java.util.Collection,ua.edu.ChaliyLukyanov.laba3.model.component.*" %>
+<%@ page import="ua.edu.ChaliyLukyanov.laba3.model.Application"%>
+<%@ page import="ua.edu.ChaliyLukyanov.laba3.model.Consts"%>
 <%@ page errorPage="error.jsp"%>
 <body>
 	<div id="container">
@@ -40,19 +41,14 @@
 			<div class="content">
 
 				<form action="removecomponent" method="post">
-					<br /> <b>Component: </b> 
-					<select name="id_component"	id="id_component">
-						<%
-							ComponentHome compHome = (ComponentHome) request.getAttribute(Application.COMPONENT);
-							Collection<Component> components = compHome.findAll();
-							for (Component comp : components) {
-						%>
-								<option value="<%=comp.getId()%>" title="id"><%=comp.getTitle()%></option>
-
-						<%
-							}
-						%>
-					</select><br /> <br />
+				<br/><b>Component: </b>
+					<select name="id_component">
+						<c:if test="${!empty components}">
+							<c:forEach items="${components}" var="comp">
+								<option value="${comp.id}" title=<%=Consts.ID %>>${comp.title}</option>
+							</c:forEach>
+						</c:if>
+					</select><br/><br/>
 					<p align="center">
 						<input class="ui-state-default ui-corner-all" type="submit"
 							value="Remove component">

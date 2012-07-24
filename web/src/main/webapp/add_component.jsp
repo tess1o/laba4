@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page errorPage="error.jsp"%>
+<%@ page import="java.util.Collection,ua.edu.ChaliyLukyanov.laba3.model.Consts" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 fieldsetansitional//EN" "http://www.w3.org/fieldset/html4/loose.dtd">
 <html>
 <head>
@@ -75,13 +76,9 @@ fieldset {
 
 </head>
 <body>
-
 	<div id="container">
-
 		<%@ include file="header.jsp"%>
-
 		<div id="main_content">
-
 			<div class="content">
 				<h2 align="center">Add new component:</h2>
 				<form id="add_component" name="input" action="addcomponent"
@@ -89,31 +86,31 @@ fieldset {
 					<fieldset class="ui-widget ui-widget-content">
 						<div class="field">
 							<label>Title</label> <input type="text"
-								class="easyui-validatebox" name="title" maxlength="50" size="30"
+								class="easyui-validatebox" name=<%=Consts.TITLE%> maxlength="50" size="30"
 								value="${param.title}" required="fieldsetue">
 						</div>
 						<div class="field">
 							<label align="left">Description</label> <input type="text"
-								class="easyui-validatebox" name="desc" maxlength="1000"
+								class="easyui-validatebox" name=<%=Consts.DESCRIPTION %> maxlength="1000"
 								size="30" value="${param.desc}" required="fieldsetue">
 						</div>
 						<div class="field">
 							<label>Producer</label> <input type="text"
-								class="easyui-validatebox" name="producer" maxlength="50"
+								class="easyui-validatebox" name=<%=Consts.PRODUCER %> maxlength="50"
 								size="30" value="${param.prod}" required="fieldsetue">
 						</div>
 						<div class="field">
 							<label>Img(link)</label> <input type="text"
-								class="easyui-validatebox" name="img" maxlength="50" size="30"
+								class="easyui-validatebox" name=<%=Consts.IMG %> maxlength="50" size="30"
 								value="${param.img}" validType="url">
 						</div>
 						<div class="field">
-							<label>Price</label> <input type="text" name="price"
+							<label>Price</label> <input type="text" name=<%=Consts.PRICE %>
 								class="easyui-numberbox" maxlength="10" size="10"
 								value="${param.pr}" required="fieldsetue">
 						</div>
 						<div class="field">
-							<label>Weight</label> <input type="text" name="weight"
+							<label>Weight</label> <input type="text" name=<%=Consts.WEIGHT %>
 								class="easyui-numberbox" maxlength="10" size="10"
 								value="${param.w}" required="fieldsetue">
 						</div>
@@ -124,17 +121,11 @@ fieldset {
 					</fieldset>
 				</form>
 			</div>
-			
 			<div id="clear"></div>
-
 		</div>
-
 		<%@ include file="footer.jsp"%>
-
 	</div>
-
 </body>
-
 </html>
 
 

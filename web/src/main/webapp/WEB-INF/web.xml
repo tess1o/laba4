@@ -73,7 +73,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RemoveDeviceServlet</servlet-name>
-		<url-pattern>/removedevices</url-pattern>
+		<url-pattern>/removedevice</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
@@ -84,16 +84,6 @@
 	<servlet-mapping>
 		<servlet-name>ShowNextLevelDevicesServlet</servlet-name>
 		<url-pattern>/shownextleveldevices</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>FilterComponentsServlet</display-name>
-		<servlet-name>FilterComponentsServlet</servlet-name>
-		<servlet-class>ua.edu.ChaliyLukyanov.laba3.controller.servlets.FilterComponentsServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>FilterComponentsServlet</servlet-name>
-		<url-pattern>/filtercomponent</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>

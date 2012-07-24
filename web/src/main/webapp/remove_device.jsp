@@ -17,7 +17,9 @@
 <link href="menu.css" rel="stylesheet" type="text/css" />
 <link href="links.css" rel="stylesheet" type="text/css" />
 <link href="selectmenu.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn/tags/1.8.9/themes/smoothness/jquery-ui.css" type="text/css" />
+<link rel="stylesheet"
+	href="http://jquery-ui.googlecode.com/svn/tags/1.8.9/themes/smoothness/jquery-ui.css"
+	type="text/css" />
 
 </head>
 <%@ page
@@ -32,17 +34,12 @@
 
 			<div class="content">
 				<h2 align="center">Devices:</h2>
-				<form method="post" name="remove_devices" action="removedevices">
-					<%
-						DeviceHome devHome = (DeviceHome) request.getAttribute(Application.DEVICE);
-						Collection<Device> devices = devHome.findAll();
-						for (Device dev : devices) {
-					%>
-						<input type="checkbox" name="<%=dev.getId()%>"
-							value="<%=dev.getId()%>" /><%=dev.getTitle()%><br />
-						<%
-							}
-						%>
+				<form method="post" name="remove_devices" action="removedevice">
+					<c:if test="${!empty devices}">
+						<c:forEach items="${devices}" var="dev">
+							<input type="checkbox" name="${dev.id}" value="${dev.id}" />${dev.title}<br />
+						</c:forEach>
+					</c:if>
 					<p align="center">
 						<input class="ui-state-default ui-corner-all" type="submit"
 							value="Remove device">

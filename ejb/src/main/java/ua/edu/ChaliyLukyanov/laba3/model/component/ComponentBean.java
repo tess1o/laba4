@@ -94,14 +94,15 @@ public class ComponentBean implements EntityBean {
 		try {
 			conn = getConnection();
 			st = conn.prepareStatement(Consts.INSERT_COMPONENT);
-			st.setString(1, title);
-			st.setString(2, description);
-			st.setString(3, producer);
-			st.setDouble(4, weight);
-			st.setString(5, img);
-			st.setDouble(6, price);
+			this.id = this.getNextId();
+			st.setInt(1, id);
+			st.setString(2, title);
+			st.setString(3, description);
+			st.setString(4, producer);
+			st.setDouble(5, weight);
+			st.setString(6, img);
+			st.setDouble(7, price);
 			st.execute();
-			this.id = this.getCurrentComponentId();
 			setTitle(title);
 			setImg(img);
 			setDescription(description);
@@ -313,20 +314,19 @@ public class ComponentBean implements EntityBean {
 		}
 	}
 
-	private Integer getCurrentComponentId() {
+	private Integer getNextId() {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet row = null;
 		int ident = 0;
 		try {
 			conn = getConnection();
-			st = conn.prepareStatement(Consts.GET_ID_LAST_COMPONENT);
+			st = conn.prepareStatement(Consts.GET_NEXT_COMPONENT_ID);
 			row = st.executeQuery();
 			if (row.next()) {
 				ident = row.getInt(1);
 			} else {
-				throw new NoSuchComponentException(
-						"Can't get last component ID");
+				throw new NoSuchComponentException("Can't get last component ID");
 			}
 			return ident;
 		} catch (SQLException e) {
