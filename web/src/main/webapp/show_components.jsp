@@ -17,7 +17,14 @@
 	"http://datatables.net/release-datatables/media/css/demo_table_jui.css"
 	;
 </style>
+<link rel="stylesheet"
+	href="http://jquery-ui.googlecode.com/svn/tags/1.8.9/themes/smoothness/jquery-ui.css"
+	type="text/css" />
 
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 
 <script type="text/javascript" language="javascript"
 	src="http://datatables.net/release-datatables/media/js/jquery.js"></script>
@@ -48,28 +55,36 @@
 			<div class="content">
 
 				<h2 align="center">Components:</h2>
+				
 				<c:if test="${components != null}">
-					<table border="1" cellpadding="10" align="center"
-						id="show_component">
-						<thead>
-							<tr>
-								<td>Title</td>
-								<td>Producer</td>
-								<td>Weight</td>
-								<td>Price</td>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${components}" var="component">
+					<form method="post" name="remove_components" action="removesinglecomponent">
+						<table border="1" cellpadding="10" align="center"
+							id="show_component">
+							<thead>
 								<tr>
-									<td><a href="showcomponent?id=${component.id}">${component.title}</a></td>
-									<td>${component.producer}</td>
-									<td>${component.weight}</td>
-									<td>${component.price}</td>
+									<td>Title</td>
+									<td>Producer</td>
+									<td>Weight</td>
+									<td>Price</td>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${components}" var="component">
+									<tr>
+									 
+										<td><input type="checkbox" name="${component.id}" value="${component.id}" /> <a href="showcomponent?id=${component.id}">${component.title}</a></td>
+										<td>${component.producer}</td>
+										<td>${component.weight}</td>
+										<td>${component.price}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<p align="center">
+							<input class="ui-state-default ui-corner-all" type="submit"
+								value="Remove device">
+						</p>
+					</form>
 				</c:if>
 
 			</div>
