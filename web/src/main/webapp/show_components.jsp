@@ -30,9 +30,20 @@
 	src="http://datatables.net/release-datatables/media/js/jquery.js"></script>
 <script type="text/javascript" language="javascript"
 	src="http://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-		oTable = $('#show_component').dataTable({
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    	$('#submitButton').attr('disabled', 'disabled');
+     $('input:checkbox').click(function() {
+            var buttonsChecked = $('input:checkbox:checked');
+            if (buttonsChecked.length) {
+                $('#submitButton').removeAttr('disabled');
+                } 
+            else {
+                $('#submitButton').attr('disabled', 'disabled');
+                }
+            });
+	oTable = $('#show_component').dataTable({
 			"bJQueryUI" : true,
 			"sPaginationType" : "full_numbers",
 			"bPaginate": false,
@@ -72,7 +83,7 @@
 								<c:forEach items="${components}" var="component">
 									<tr>
 									 
-										<td><input type="checkbox" name="${component.id}" value="${component.id}" /> <a href="showcomponent?id=${component.id}">${component.title}</a></td>
+										<td><input type="checkbox" name="${component.id}" value="${component.id}"/> <a href="showcomponent?id=${component.id}">${component.title}</a></td>
 										<td>${component.producer}</td>
 										<td>${component.weight}</td>
 										<td>${component.price}</td>
@@ -81,8 +92,7 @@
 							</tbody>
 						</table>
 						<p align="center">
-							<input class="ui-state-default ui-corner-all" type="submit"
-								value="Remove component(s)">
+							<input class="ui-state-default ui-corner-all" type="submit" id="submitButton" value="Remove device"  onclick="return confirm('Are you sure?')">
 						</p>
 					</form>
 				</c:if>
