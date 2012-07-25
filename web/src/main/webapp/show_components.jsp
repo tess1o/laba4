@@ -82,7 +82,7 @@
 						</table>
 						<p align="center">
 							<input class="ui-state-default ui-corner-all" type="submit"
-								value="Remove device">
+								value="Remove component(s)">
 						</p>
 					</form>
 				</c:if>
