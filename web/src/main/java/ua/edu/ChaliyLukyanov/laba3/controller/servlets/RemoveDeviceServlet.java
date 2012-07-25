@@ -23,6 +23,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.device.Device;
 import ua.edu.ChaliyLukyanov.laba3.model.device.DeviceHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Remove device from database.
+ * @author chalyi
+ *
+ */
 public class RemoveDeviceServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -31,11 +36,10 @@ public class RemoveDeviceServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		DeviceHome model = (DeviceHome) request
-				.getAttribute(Application.DEVICE);
+
 		try {
-			Enumeration<String> names = (Enumeration<String>) request
-					.getParameterNames();
+			DeviceHome model = (DeviceHome) request.getAttribute(Application.DEVICE);
+			Enumeration<String> names = (Enumeration<String>) request.getParameterNames();
 			while (names.hasMoreElements()) {
 				int id = Integer.parseInt(names.nextElement());
 				model.remove(id);
@@ -48,10 +52,10 @@ public class RemoveDeviceServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} catch (ShopException e) {
 			logger.error(e);
-			throw e;
+			throw new ShopException(e.getMessage());
 		} catch (NumberFormatException e) {
 			logger.info(e);
-			throw e;
+			throw new NumberFormatException(e.getMessage());
 		} catch (RemoveException e) {
 			logger.error(e);
 			throw new ShopException(e.getMessage());

@@ -3,8 +3,15 @@ package ua.edu.ChaliyLukyanov.laba3.model.component;
 import java.rmi.RemoteException;
 import java.util.Comparator;
 
+/**
+ * Component's comparator. 
+ */
 public class ComponentComparator {
 
+	/**
+	 * Comparator by component price.
+	 */ 
+ 
 	public static class PriceComparator implements Comparator<Component> {
 
 		@Override
@@ -27,6 +34,10 @@ public class ComponentComparator {
 		}
 	}
 
+	/**
+	 * Comporator by component producer name
+	 */ 
+
 	public static class ProducerComparator implements Comparator<Component> {
 
 		@Override
@@ -44,6 +55,10 @@ public class ComponentComparator {
 		}
 	}
 
+	/**
+	 * Comporator by component title
+	 */
+	 
 	public static class TitleComparator implements Comparator<Component> {
 
 		@Override

@@ -17,6 +17,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchComponentException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 import ua.edu.ChaliyLukyanov.laba3.model.Consts;
 
+/**
+ * Add component to database
+ * @author chalyi
+ *
+ */
 public class AddComponentServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -46,7 +51,7 @@ public class AddComponentServlet extends HttpServlet {
             logger.error(e);
             throw e;
         } catch (NoSuchComponentException e) {
-            logger.error(e);
+            logger.info(e);
             throw e;
         } catch (CreateException e) {
             logger.error(e);

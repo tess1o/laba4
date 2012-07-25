@@ -6,6 +6,12 @@ import javax.ejb.CreateException;
 import javax.ejb.EJBHome;
 import javax.ejb.FinderException;
 
+/**
+ * Device's home interface
+ * @author chalyi
+ *
+ */
+
 public interface DeviceHome extends EJBHome {
 
 	public Collection<Device> findAll() throws FinderException, RemoteException;
@@ -24,7 +30,4 @@ public interface DeviceHome extends EJBHome {
 
 	public Collection<Device> findFirstLevelsDeviceByID(Integer id)
 			throws FinderException, RemoteException;
-
-	// public Integer findIdLastDevice() throws
-	// FinderException, RemoteException;
 }

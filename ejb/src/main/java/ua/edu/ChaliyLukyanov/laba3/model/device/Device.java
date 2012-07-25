@@ -3,6 +3,11 @@ package ua.edu.ChaliyLukyanov.laba3.model.device;
 import java.rmi.RemoteException;
 import javax.ejb.EJBObject;
 
+/**
+ * Remote interface of device bean
+ * @author chalyi
+ *
+ */
 public interface Device extends EJBObject {
     
     public int getId() throws RemoteException;
@@ -12,6 +17,5 @@ public interface Device extends EJBObject {
     public int getIdComponent() throws RemoteException;
 
     public String getTitle() throws RemoteException;
-    
-    public int getLevel() throws RemoteException;
+
 }

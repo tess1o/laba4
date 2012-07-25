@@ -25,6 +25,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.constants.Consts;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchComponentException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Component bean implementation.
+ * @author chalyi
+ *
+ */
 public class ComponentBean implements EntityBean {
 
 	private static final long serialVersionUID = 1L;
@@ -37,6 +42,11 @@ public class ComponentBean implements EntityBean {
 	private String img;
 	private double price;
 
+	/**
+	 * Find all components from database.
+	 * @return collection of primary keys of all objects
+	 * @throws FinderException
+	 */
 	public Collection<Integer> ejbFindAll() throws FinderException {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -85,6 +95,17 @@ public class ComponentBean implements EntityBean {
 			throws CreateException {
 	}
 
+	/**
+	 * Create new Component from it's fields
+	 * @param title - component's title
+	 * @param description - component's description
+	 * @param producer - component's producer name
+	 * @param weight - component's weight
+	 * @param img - component's url to img
+	 * @param price - component's price
+	 * @return primary key of new component object
+	 * @throws CreateException if was some problem with creating new component
+	 */
 	public Integer ejbCreate(String title, String description, String producer,
 			double weight, String img, double price) throws CreateException {
 
@@ -131,7 +152,14 @@ public class ComponentBean implements EntityBean {
 
 		}
 	}
-
+	
+	/**
+	 * Find out component by it's primary key
+	 * @param id - component's ID
+	 * @return id of this component
+	 * @throws FinderException if was some problem while was looking for component
+	 * or no component was found with this id
+	 */
 	public Integer ejbFindByPrimaryKey(Integer id) throws FinderException {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -176,6 +204,11 @@ public class ComponentBean implements EntityBean {
 		}
 	}
 
+	/**
+	 * Store component to database
+	 * @throws EJBException
+	 * @throws RemoteException
+	 */
 	@Override
 	public void ejbStore() throws EJBException, RemoteException {
 		Connection conn = null;
@@ -211,7 +244,12 @@ public class ComponentBean implements EntityBean {
 			}
 		}
 	}
-
+	
+    /**
+     * Get component from database
+     * @throws EJBException
+     * @throws RemoteException
+     */
 	@Override
 	public void ejbLoad() throws EJBException, RemoteException {
 		Connection conn = null;
@@ -281,6 +319,12 @@ public class ComponentBean implements EntityBean {
 		context = null;
 	}
 
+	/**
+	 * Remove component from database
+	 * @throws RemoveException
+	 * @throws EJBException
+	 * @throws RemoteException
+	 */
 	@Override
 	public void ejbRemove() throws RemoveException, EJBException,
 			RemoteException {
@@ -314,6 +358,10 @@ public class ComponentBean implements EntityBean {
 		}
 	}
 
+	/**
+	 * Get new valid primary key from database. Uses for creating new component
+	 * @return new primary key
+	 */
 	private Integer getNextId() {
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -360,6 +408,11 @@ public class ComponentBean implements EntityBean {
 		}
 	}
 
+	/**
+	 * Get Connection from datasource via JNDI.
+	 * @return SQL Connection to database.
+	 * @throws SQLException
+	 */
 	private Connection getConnection() throws SQLException {
 		DataSource ds = null;
 		try {

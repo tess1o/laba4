@@ -36,8 +36,12 @@ public class DeviceBean implements EntityBean {
     private Integer idPrev;
     private Integer idComponent;
     private String title;
-    private int level;
 
+    /**
+     * Find out all devices from database
+     * @return collection of devices' primaries keys
+     * @throws FinderException
+     */
     public Collection<Integer> ejbFindAll() throws FinderException {
         Connection conn = null;
         PreparedStatement st = null;
@@ -81,6 +85,12 @@ public class DeviceBean implements EntityBean {
         }
     }
     
+    /**
+     * Find out device by id
+     * @param id - devices id
+     * @return primary key of this device.
+     * @throws FinderException
+     */
     public Integer ejbFindByPrimaryKey(Integer id) throws FinderException {
         Connection conn = null;
         PreparedStatement st = null;
@@ -128,6 +138,14 @@ public class DeviceBean implements EntityBean {
     public void ejbPostCreate(String title, Integer idPrev, Integer idComponent)
             throws CreateException{}
     
+    /**
+     * 
+     * @param title - device's title
+     * @param idPrev - parent's id
+     * @param idComponent - component's id
+     * @return primary key of new device
+     * @throws CreateException
+     */
     public Integer ejbCreate(String title, Integer idPrev, Integer idComponent)
             throws CreateException {
 
@@ -172,6 +190,11 @@ public class DeviceBean implements EntityBean {
         }
     }
 
+    /**
+     * Load device from database
+     * @throws EJBException
+     * @throws RemoteException
+     */
     @Override
     public void ejbLoad() throws EJBException, RemoteException {
         Connection conn = null;
@@ -220,6 +243,12 @@ public class DeviceBean implements EntityBean {
         }
     }
 
+    /**
+     * Remove device from database
+     * @throws RemoveException
+     * @throws EJBException
+     * @throws RemoteException
+     */
     @Override
     public void ejbRemove() throws RemoveException, EJBException, RemoteException {
         Connection conn = null;
@@ -250,18 +279,38 @@ public class DeviceBean implements EntityBean {
         }
     }
 
+    /**
+     * Find out all parents of this device
+     * @param id - device's id
+     * @return devices' primary keys
+     * @throws FinderException
+     * @throws RemoteException
+     */
     public Collection<Integer> ejbFindPrevLevelsDeviceByID(Integer id) throws FinderException, RemoteException {
         return getLevelDevices(id, Consts.GET_PREV_LEVELS_DEVICE_BY_ID);
     }
 
+    /**
+     * Find out all child of this device
+     * @param id - device id
+     * @return devices' primary keys
+     * @throws FinderException
+     * @throws RemoteException
+     */
     public Collection<Integer> ejbFindNextLevelsDeviceByID(Integer id) throws FinderException, RemoteException {
         return getLevelDevices(id, Consts.GET_NEXT_LEVEL_DEVICE_BY_ID);
     }
-
+    
     public Collection<Integer> ejbFindFirstLevelsDeviceByID(Integer id) throws FinderException, RemoteException {
         return getLevelDevices(id, Consts.GET_FIRST_LEVEL_DEVICES);
     }
 
+    /**
+     * Execute sql query and find devices for id.
+     * @param id
+     * @param sql
+     * @return list of primary keys.
+     */
     private List<Integer> getLevelDevices(int id, String sql) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -331,6 +380,10 @@ public class DeviceBean implements EntityBean {
     public void ejbPassivate() throws EJBException, RemoteException {
     }
 
+    /**
+     * Get valid primary key for new device
+     * @return
+     */
     public int getNextId() {
         Connection conn = null;
         PreparedStatement st = null;
@@ -366,6 +419,12 @@ public class DeviceBean implements EntityBean {
             }
         }
     }
+    
+    /**
+     * Get SQL Connection to database from JNDI
+     * @return sql connection
+     * @throws SQLException
+     */
 
 	private Connection getConnection() throws SQLException {
 		DataSource ds = null;
@@ -407,13 +466,5 @@ public class DeviceBean implements EntityBean {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 }

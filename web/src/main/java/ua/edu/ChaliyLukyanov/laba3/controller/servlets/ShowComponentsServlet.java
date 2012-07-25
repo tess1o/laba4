@@ -21,6 +21,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.component.ComponentHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchComponentException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Get all components from database and send them to JSP
+ * @author chalyi
+ *
+ */
 public class ShowComponentsServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -30,9 +35,9 @@ public class ShowComponentsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
     	
-        ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
         try {
-            Collection<Component> components = model.findAll();
+            ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
+        	Collection<Component> components = model.findAll();
             request.setAttribute(Consts.COMPONENTS, components);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/show_components.jsp");
             dispatcher.forward(request, response);
@@ -40,7 +45,7 @@ public class ShowComponentsServlet extends HttpServlet {
             logger.error(e);
             throw e;
         } catch (NumberFormatException e) {
-            logger.info(e);
+            logger.error(e);
             throw e;
         } catch (FinderException e) {
             logger.error(e);

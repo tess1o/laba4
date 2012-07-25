@@ -21,6 +21,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.component.Component;
 import ua.edu.ChaliyLukyanov.laba3.model.component.ComponentHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Remove component from database. Parse ID from parameters and remove component with this id.
+ * @author chalyi
+ *
+ */
 public class RemoveComponentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

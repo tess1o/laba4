@@ -3,6 +3,12 @@ package ua.edu.ChaliyLukyanov.laba3.model.component;
 import java.rmi.RemoteException;
 import javax.ejb.EJBObject;
 
+/**
+ * Remote interface of component bean
+ * Describes getters and setters of component 
+ * @author chalyi
+ *
+ */
 public interface Component extends EJBObject {
 
     public int getId() throws RemoteException;

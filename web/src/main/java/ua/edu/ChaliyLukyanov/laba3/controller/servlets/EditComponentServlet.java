@@ -18,6 +18,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.component.ComponentHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchComponentException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Edit components. Change title or producer or description or price.
+ * @author chalyi
+ *
+ */
 public class EditComponentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -26,14 +31,13 @@ public class EditComponentServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		ComponentHome model = (ComponentHome) request
-				.getAttribute(Application.COMPONENT);
+		
 		try {
+			ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
 			int id = Integer.parseInt(request.getParameter(Consts.ID));
 			Component component = model.findByPrimaryKey(id);
 			request.setAttribute(Consts.COMPONENT, component);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("/edit_component.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_component.jsp");
 			dispatcher.forward(request, response);
 		} catch (ShopException e) {
 			logger.error(e);
@@ -50,9 +54,9 @@ public class EditComponentServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		ComponentHome model = (ComponentHome) request
-				.getAttribute(Application.COMPONENT);
+		
 		try {
+			ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
 			Integer id = new Integer(request.getParameter(Consts.ID_COMPONENT));
 			Component component = model.findByPrimaryKey(id);
 			String title = request.getParameter(Consts.TITLE);

@@ -24,6 +24,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.device.DeviceHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchDeviceException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Add device to database
+ * @author chalyi
+ *
+ */
 public class AddDeviceServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -31,8 +36,9 @@ public class AddDeviceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DeviceHome model = (DeviceHome) request.getAttribute(Application.DEVICE);
         try {
+        	
+        	DeviceHome model = (DeviceHome) request.getAttribute(Application.DEVICE);
             String title = request.getParameter(Consts.TITLE);
 
             if ("".equals(title)) {

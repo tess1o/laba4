@@ -18,6 +18,11 @@ import ua.edu.ChaliyLukyanov.laba3.model.component.ComponentHome;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.NoSuchComponentException;
 import ua.edu.ChaliyLukyanov.laba3.model.exception.ShopException;
 
+/**
+ * Get one component from database and send it to JSP
+ * @author chalyi
+ *
+ */
 public class ShowComponentServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -25,10 +30,10 @@ public class ShowComponentServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter(Consts.ID));
-        ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
         try {
-            Component component = model.findByPrimaryKey(id);
+            int id = Integer.parseInt(request.getParameter(Consts.ID));
+            ComponentHome model = (ComponentHome) request.getAttribute(Application.COMPONENT);
+        	Component component = model.findByPrimaryKey(id);
             request.setAttribute(Consts.COMPONENT, component);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/show_component.jsp");
             dispatcher.forward(request, response);

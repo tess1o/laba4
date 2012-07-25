@@ -38,7 +38,7 @@
 					<ejbVersion>2.0</ejbVersion>
 				</configuration>
 			</plugin>
-
+			
 			<plugin> 
 			  <groupId>com.oracle.weblogic</groupId>
 			  <artifactId>weblogic-maven-plugin</artifactId>
@@ -67,7 +67,4 @@
 			</plugin>
 		</plugins>
     </build>
-	
-	
-	
 </project>
